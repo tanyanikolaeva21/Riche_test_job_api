@@ -18,11 +18,11 @@ https://docs.retailcrm.ru/Developers/API/APIVersions/APIv5#get--api-v5-orders
 
 Метод куда нужно записывать 
 
-http://94.241.143.164:8000/site/add_site_items/
+http://94.&&&.143.164:8000/site/add_site_items/
 
 Документация к принимающему API
 
-http://94.241.143.164:8000/docs
+http://94.&&&.143.164:8000/docs
 
 
 Вторая часть состоит в том что у метода orders (retailcrm) есть пагинация 
