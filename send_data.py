@@ -50,9 +50,8 @@ with open('orders_data.json', 'r', encoding='utf-8') as json_file:
                     "message"
                     ))
         else:
-            print(
-                f"Ошибка при отправке данных на сервер:
-                 {server_response.status_code}, {server_response.text}"
+            print(f"Ошибка при отправке данных на сервер:"
+                 f"{server_response.status_code}, {server_response.text}"
                  )
 
         # Добавляем задержку между отправками (3 секунды)

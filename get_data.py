@@ -76,9 +76,8 @@ while page_number <= total_pages and len(data_to_send["data"]) < 5:
         with open('orders_data.json', 'w', encoding='utf-8') as json_file:
             json.dump(data_to_send, json_file, ensure_ascii=False, indent=2)
 
-        print(
-            f"Страница {page_number} 
-            обработана и данные сохранены в orders_data.json.")
+        print(f"Страница {page_number} обработана "
+              f"данные сохранены в orders_data.json.")
         page_number += 1
 
         # Добавляем задержку между сбором данных
