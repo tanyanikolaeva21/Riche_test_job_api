@@ -6,7 +6,7 @@ from io import StringIO
 from dotenv import load_dotenv
 
 load_dotenv()
-user = 'НиколаеваТ'
+
 
 # Сначала собираем данные
 url = os.getenv('url')
@@ -14,17 +14,15 @@ api_key = os.getenv('api_key')
 server_url = os.getenv('server_url')
 page_number = 1  # начинаем с первой страницы
 total_pages = 1  # устанавливаем начальное значение
+user = 'Николаева Т.Н.'
 
 # Создаем строковый буфер для данных, который соответствует вашему ожиданию
 data_to_send_buffer = StringIO()
-data_to_send_buffer.write('{"data": []}')
+data_to_send_buffer.write('{"user": "' + user + '", "data": []}')
 
-while page_number <= total_pages and len(
-    json.loads(data_to_send_buffer.getvalue())["data"]
-    ) < 5:
+while page_number <= total_pages and len(json.loads(data_to_send_buffer.getvalue())["data"]) < 5:
     params = {
         'page': page_number,
-        'user': user,
     }
     headers = {
         'Content-Type': 'application/json',
@@ -112,7 +110,7 @@ headers = {'Content-Type': 'application/json'}
 
 for chunk in chunks:
     # Отправляем данные на сервер
-    server_response = requests.post(server_url, json={"data": chunk}, headers=headers)
+    server_response = requests.post(server_url, json={"user": user, "data": chunk}, headers=headers)
 
     # Выводим ответ сервера
     try:
@@ -132,5 +130,6 @@ for chunk in chunks:
     else:
         print(f"Ошибка при отправке данных на сервер: {server_response.status_code}, {server_response.text}")
 
-    # Добавляем задержку между отправками (в сек)
+    # Добавляем задержку между отправками (например, 3 секунды)
     time.sleep(3)
+
